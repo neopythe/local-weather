@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 
 import type { Weather } from '@/api/types';
 
-import getWeather from '../api/getWeather';
+import getWeather from '@/api/getWeather';
 
 export interface WeatherState {
   weather: Weather | null;

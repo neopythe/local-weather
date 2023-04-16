@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import type { Weather } from './types';
+import type { Weather } from '@/api/types';
 
 const getWeather = async (city: string, units: string = 'metric') => {
   const { data } = await axios.get<Weather>(
