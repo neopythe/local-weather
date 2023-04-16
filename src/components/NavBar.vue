@@ -1,12 +1,26 @@
 <template>
-  <nav class="mb-0 flex max-w-full flex-col items-start gap-6">
-    <div class="flex h-10 w-full justify-between whitespace-nowrap">
-      <h1 class="font-mustica text-4xl">Local Weather</h1>
-      <img src="/icons/02d.png" class="max-h-full" />
+  <nav>
+    <div class="wrapper">
+      <h2>Local Weather</h2>
+      <img src="/icons/02d.png" />
     </div>
   </nav>
 </template>
 
-<script setup lang="ts"></script>
+<style scoped>
+div .wrapper {
+  @apply flex h-fit w-full justify-between gap-6 whitespace-nowrap;
+}
 
-<style scoped></style>
+h2 {
+  @apply font-mustica text-4xl sm:text-5xl md:text-6xl lg:text-7xl;
+}
+
+img {
+  @apply h-10 max-h-full sm:h-12 md:h-14 lg:h-16;
+}
+
+nav {
+  @apply flex max-w-full flex-col items-start gap-6;
+}
+</style>
