@@ -6,6 +6,6 @@
 
 <style scoped>
 div {
-  @apply m-4 flex min-h-fit max-w-full flex-col gap-4 rounded-lg bg-[#00000025] p-4;
+  @apply flex min-h-fit min-w-fit max-w-full flex-col gap-4 rounded-lg bg-[#00000025] p-4;
 }
 </style>
