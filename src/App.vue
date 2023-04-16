@@ -22,7 +22,7 @@ onMounted(() => weatherStore.fetchWeather('Osaka'));
       @keyup.enter="weatherStore.fetchWeather(searchTerm)"
     />
     <section class="mx-auto">
-      <content-card>
+      <content-card v-if="!weatherStore.isLoading">
         <div class="mx-auto flex w-full items-center justify-between gap-4">
           <div>
             <h2 class="text-lg">
