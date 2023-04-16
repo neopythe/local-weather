@@ -83,7 +83,7 @@ import { onMounted, ref } from 'vue';
 
 import { useWeatherStore } from '@/stores/weather';
 
-import ContentCard from '@/components/ContentCard.vue';
+import ContentCard from '@/components/Shared/ContentCard.vue';
 import NavBar from '@/components/NavBar.vue';
 
 const searchTerm = ref('');
