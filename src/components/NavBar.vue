@@ -8,7 +8,7 @@
 </template>
 
 <style scoped>
-div .wrapper {
+div.wrapper {
   @apply flex h-fit w-full justify-between gap-6 whitespace-nowrap;
 }
 
