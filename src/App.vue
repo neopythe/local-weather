@@ -1,26 +1,15 @@
-<script setup lang="ts">
-import { onMounted, ref } from 'vue';
-
-import { useWeatherStore } from '@/stores/weather';
-
-import ContentCard from '@/components/ContentCard.vue';
-
-const searchTerm = ref('');
-
-const weatherStore = useWeatherStore();
-
-onMounted(() => weatherStore.fetchWeather('Osaka'));
-</script>
-
 <template>
   <div class="flex min-h-screen flex-col gap-4 bg-blue-700 text-white">
-    <input
-      class="m-4 mx-auto max-w-md rounded p-2 text-blue-700"
-      type="text"
-      v-model.lazy="searchTerm"
-      placeholder="Search for a city"
-      @keyup.enter="weatherStore.fetchWeather(searchTerm)"
-    />
+    <nav class="mx-auto flex w-full max-w-screen-2xl justify-around p-8">
+      <h1 class="font-mustica text-6xl">Local Weather</h1>
+      <input
+        class="m-4 h-10 max-w-md rounded p-2 text-blue-700"
+        type="text"
+        v-model.lazy="searchTerm"
+        placeholder="Search for a city"
+        @keyup.enter="weatherStore.fetchWeather(searchTerm)"
+      />
+    </nav>
     <section class="mx-auto">
       <content-card v-if="!weatherStore.isLoading">
         <div class="mx-auto flex w-full items-center justify-between gap-4">
@@ -32,7 +21,7 @@ onMounted(() => weatherStore.fetchWeather('Osaka'));
             </h2>
             <div class="flex items-center gap-4 p-2">
               <p class="text-3xl font-bold">
-                {{ weatherStore.weather?.main.temp }}°C
+                {{ Math.round(weatherStore.weather?.main.temp!) }}°C
               </p>
               <p class="text-sm font-light">
                 [ {{ weatherStore.weather?.weather[0].description }} ]
@@ -48,3 +37,17 @@ onMounted(() => weatherStore.fetchWeather('Osaka'));
     </section>
   </div>
 </template>
+
+<script setup lang="ts">
+import { onMounted, ref } from 'vue';
+
+import { useWeatherStore } from '@/stores/weather';
+
+import ContentCard from '@/components/ContentCard.vue';
+
+const searchTerm = ref('');
+
+const weatherStore = useWeatherStore();
+
+onMounted(() => weatherStore.fetchWeather('Osaka'));
+</script>
