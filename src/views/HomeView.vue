@@ -3,19 +3,14 @@
     <div
       class="mx-auto flex w-full flex-col gap-6 p-6 sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg"
     >
-      <nav class="mb-0 flex max-w-full flex-col items-start gap-6">
-        <div class="flex h-10 w-full justify-between whitespace-nowrap">
-          <h1 class="font-mustica text-4xl">Local Weather</h1>
-          <img src="/icons/02d.png" class="max-h-full" />
-        </div>
-        <input
-          class="h-10 w-full rounded p-4 font-semibold text-blue-600"
-          type="text"
-          v-model.lazy="searchTerm"
-          placeholder="Search for a city"
-          @keyup.enter="weatherStore.fetchWeather(searchTerm)"
-        />
-      </nav>
+      <nav-bar />
+      <input
+        class="h-10 w-full rounded p-4 font-semibold text-blue-600"
+        type="text"
+        v-model.lazy="searchTerm"
+        placeholder="Search for a city"
+        @keyup.enter="weatherStore.fetchWeather(searchTerm)"
+      />
       <main>
         <content-card v-if="!weatherStore.isLoading">
           <div class="flex flex-col gap-4">
@@ -89,6 +84,7 @@ import { onMounted, ref } from 'vue';
 import { useWeatherStore } from '@/stores/weather';
 
 import ContentCard from '@/components/ContentCard.vue';
+import NavBar from '@/components/NavBar.vue';
 
 const searchTerm = ref('');
 
