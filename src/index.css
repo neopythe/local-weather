@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'MusticaPro-SemiBold';
+  font-display: auto;
+  unicode-range: U+000-5FF;
+  src: url('fonts/MusticaPro-SemiBold.otf');
+}
