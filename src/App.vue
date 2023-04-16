@@ -3,7 +3,7 @@
     <nav class="m-6 mb-0 flex max-w-full flex-col items-start gap-6">
       <div class="flex h-10 w-full justify-between whitespace-nowrap">
         <h1 class="font-mustica text-4xl">Local Weather</h1>
-        <img src="icons/02d.png" class="max-h-full" />
+        <img src="/icons/02d.png" class="max-h-full" />
       </div>
       <input
         class="h-10 w-full rounded p-4 font-semibold text-blue-600"
@@ -40,7 +40,7 @@
               </div>
             </div>
             <img
-              :src="`icons/${weatherStore.weather?.weather[0].icon}.png`"
+              :src="`/icons/${weatherStore.weather?.weather[0].icon}.png`"
               class="h-20"
             />
           </section>
