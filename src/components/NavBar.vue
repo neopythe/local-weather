@@ -13,11 +13,13 @@ div.wrapper {
 }
 
 h2 {
-  @apply font-mustica text-4xl sm:text-5xl md:text-6xl lg:text-7xl;
+  @apply font-mustica text-4xl;
+  @apply sm:text-5xl md:text-6xl lg:text-7xl;
 }
 
 img {
-  @apply h-10 max-h-full sm:h-12 md:h-14 lg:h-16;
+  @apply h-10 max-h-full;
+  @apply sm:h-12 md:h-14 lg:h-16;
 }
 
 nav {
