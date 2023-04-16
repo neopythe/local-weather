@@ -3,6 +3,8 @@ import { onMounted, ref } from 'vue';
 
 import { useWeatherStore } from '@/stores/weather';
 
+import ContentCard from '@/components/ContentCard.vue';
+
 const searchTerm = ref('');
 
 const weatherStore = useWeatherStore();
@@ -19,17 +21,21 @@ onMounted(() => weatherStore.fetchWeather('Osaka'));
       placeholder="Search for a city"
       @keyup.enter="weatherStore.fetchWeather(searchTerm)"
     />
-    <div class="m-4 max-w-lg mx-auto">
-      <h2 class="text-lg font-semibold">
-        Weather in {{ weatherStore.weather?.name }}:
-      </h2>
-      <div class="p-2">
-        <p>{{ weatherStore.weather?.main.temp }} degrees</p>
-        <p class="font-light">
-          {{ weatherStore.weather?.weather[0].description }}
-        </p>
+    <content-card>
+      <div class="max-w-lg mx-auto">
+        <h2 class="text-lg font-semibold">
+          Weather in {{ weatherStore.weather?.name }}:
+        </h2>
+        <div class="p-2">
+          <p>{{ weatherStore.weather?.main.temp }} degrees</p>
+          <p class="font-light">
+            {{ weatherStore.weather?.weather[0].description }}
+          </p>
+        </div>
       </div>
-    </div>
-    <p class="m-4 px-8 max-w-lg mx-auto">{{ weatherStore.weather }}</p>
+      <p class="p-4 max-w-sm mx-auto text-xs">
+        {{ weatherStore.weather }}
+      </p>
+    </content-card>
   </div>
 </template>
