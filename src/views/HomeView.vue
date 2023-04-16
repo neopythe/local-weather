@@ -4,12 +4,10 @@
       class="mx-auto flex w-full flex-col gap-6 p-6 sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg"
     >
       <nav-bar />
-      <input
-        class="h-10 w-full rounded p-4 font-semibold text-blue-600"
-        type="text"
-        v-model.lazy="searchTerm"
+      <text-input
+        v-model.lazy="city"
         placeholder="Search for a city"
-        @keyup.enter="weatherStore.fetchWeather(searchTerm)"
+        @keyup.enter="weatherStore.fetchWeather(city)"
       />
       <main>
         <content-card v-if="!weatherStore.isLoading">
@@ -85,8 +83,9 @@ import { useWeatherStore } from '@/stores/weather';
 
 import ContentCard from '@/components/Shared/ContentCard.vue';
 import NavBar from '@/components/NavBar.vue';
+import TextInput from '@/components/Shared/TextInput.vue';
 
-const searchTerm = ref('');
+const city = ref('');
 
 const weatherStore = useWeatherStore();
 
