@@ -1,24 +1,24 @@
 <template>
   <div class="flex min-h-screen flex-col bg-blue-600 text-white">
-    <nav class="flex w-full flex-col items-start gap-4 p-4 pb-0">
+    <nav class="m-6 mb-0 flex max-w-full flex-col items-start gap-6">
       <div class="flex h-10 w-full justify-between whitespace-nowrap">
         <h1 class="font-mustica text-4xl">Local Weather</h1>
         <img src="icons/02d.png" class="max-h-full" />
       </div>
       <input
-        class="h-10 w-full rounded p-2 font-semibold text-blue-600"
+        class="h-10 w-full rounded p-4 font-semibold text-blue-600"
         type="text"
         v-model.lazy="searchTerm"
         placeholder="Search for a city"
         @keyup.enter="weatherStore.fetchWeather(searchTerm)"
       />
     </nav>
-    <main>
+    <main class="m-6">
       <content-card v-if="!weatherStore.isLoading">
         <div class="flex flex-col gap-4">
           <section class="flex max-w-full items-start justify-between">
             <div class="flex flex-col items-start gap-2">
-              <h2 class="text-md">
+              <h2 class="text-lg">
                 Weather in
                 <span class="font-bold">{{ weatherStore.weather?.name }}</span
                 >:
@@ -45,7 +45,7 @@
             />
           </section>
           <section class="grid max-w-full grid-cols-2 gap-2">
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-2 justify-self-start">
               <p class="whitespace-nowrap text-sm">Feels like:</p>
               <div class="flex font-bold">
                 <span class="text-xl">{{
@@ -54,7 +54,7 @@
                 ><span class="font-semibold">°C</span>
               </div>
             </div>
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-2 justify-self-end">
               <p class="text-sm">Humidity:</p>
               <div class="flex items-center gap-1">
                 <span class="text-xl font-bold">{{
@@ -63,7 +63,7 @@
                 ><span>%</span>
               </div>
             </div>
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-2 justify-self-start">
               <p class="text-sm">Wind:</p>
               <div class="flex items-center gap-1">
                 <span class="text-xl font-bold">{{
