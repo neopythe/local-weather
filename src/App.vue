@@ -13,29 +13,38 @@ onMounted(() => weatherStore.fetchWeather('Osaka'));
 </script>
 
 <template>
-  <div class="flex flex-col gap-4 bg-blue-700 min-h-screen text-white">
+  <div class="flex min-h-screen flex-col gap-4 bg-blue-700 text-white">
     <input
-      class="m-4 p-2 rounded text-blue-700 max-w-md mx-auto"
+      class="m-4 mx-auto max-w-md rounded p-2 text-blue-700"
       type="text"
       v-model.lazy="searchTerm"
       placeholder="Search for a city"
       @keyup.enter="weatherStore.fetchWeather(searchTerm)"
     />
-    <content-card>
-      <div class="max-w-lg mx-auto">
-        <h2 class="text-lg font-semibold">
-          Weather in {{ weatherStore.weather?.name }}:
-        </h2>
-        <div class="p-2">
-          <p>{{ weatherStore.weather?.main.temp }} degrees</p>
-          <p class="font-light">
-            {{ weatherStore.weather?.weather[0].description }}
-          </p>
+    <section class="mx-auto">
+      <content-card>
+        <div class="mx-auto flex w-full items-center justify-between gap-4">
+          <div>
+            <h2 class="text-lg">
+              Weather in
+              <span class="font-bold">{{ weatherStore.weather?.name }}</span
+              >:
+            </h2>
+            <div class="flex items-center gap-4 p-2">
+              <p class="text-3xl font-bold">
+                {{ weatherStore.weather?.main.temp }}°C
+              </p>
+              <p class="text-sm font-light">
+                [ {{ weatherStore.weather?.weather[0].description }} ]
+              </p>
+            </div>
+          </div>
+          <img :src="`icons/${weatherStore.weather?.weather[0].icon}.png`" />
         </div>
-      </div>
-      <p class="p-4 max-w-sm mx-auto text-xs">
-        {{ weatherStore.weather }}
-      </p>
-    </content-card>
+        <p class="mx-auto max-w-sm text-xs">
+          {{ weatherStore.weather }}
+        </p>
+      </content-card>
+    </section>
   </div>
 </template>
