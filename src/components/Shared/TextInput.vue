@@ -20,6 +20,6 @@ const handleInput = ($event: Event) => {
 
 <style scoped>
 input {
-  @apply h-12 w-full rounded p-4 font-semibold text-blue-600 focus:outline-none;
+  @apply h-12 w-full rounded p-4 font-semibold text-blue-600 placeholder-blue-300 focus:outline-none;
 }
 </style>
