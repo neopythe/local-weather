@@ -1,8 +1,6 @@
 <template>
-  <div class="flex min-h-screen flex-col bg-blue-600 text-white">
-    <div
-      class="mx-auto flex w-full flex-col gap-6 p-6 sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg"
-    >
+  <div class="background">
+    <div class="wrapper">
       <nav-bar />
       <text-input
         v-model.lazy="city"
@@ -10,67 +8,25 @@
         @keyup.enter="weatherStore.fetchWeather(city)"
       />
       <main>
-        <content-card v-if="!weatherStore.isLoading">
-          <div class="flex flex-col gap-4">
-            <section class="flex max-w-full items-start justify-between">
-              <div class="flex flex-col items-start gap-2">
-                <h2 class="text-lg">
-                  Weather in
-                  <span class="font-bold">{{ weatherStore.weather?.name }}</span
-                  >:
-                </h2>
-                <div class="items flex flex-col gap-2">
-                  <div class="flex whitespace-nowrap font-bold">
-                    <span class="text-4xl">{{
-                      Math.round(weatherStore.weather?.main.temp!)
-                    }}</span
-                    ><span class="text-xl">°C</span>
-                  </div>
-                  <p>
-                    [
-                    <span class="text-sm font-light">{{
-                      weatherStore.weather?.weather[0].description
-                    }}</span>
-                    ]
-                  </p>
-                </div>
-              </div>
-              <img
-                :src="`/icons/${weatherStore.weather?.weather[0].icon}.png`"
-                class="h-20"
-              />
-            </section>
-            <section class="grid max-w-full grid-cols-2 gap-2">
-              <div class="flex items-center gap-2 justify-self-start">
-                <p class="whitespace-nowrap text-sm">Feels like:</p>
-                <div class="flex font-bold">
-                  <span class="text-xl">{{
-                    Math.round(weatherStore.weather?.main.feels_like!)
-                  }}</span
-                  ><span class="font-semibold">°C</span>
-                </div>
-              </div>
-              <div class="flex items-center gap-2 justify-self-end">
-                <p class="text-sm">Humidity:</p>
-                <div class="flex items-center gap-1">
-                  <span class="text-xl font-bold">{{
-                    Math.round(weatherStore.weather?.main.humidity!)
-                  }}</span
-                  ><span>%</span>
-                </div>
-              </div>
-              <div class="flex items-center gap-2 justify-self-start">
-                <p class="text-sm">Wind:</p>
-                <div class="flex items-center gap-1">
-                  <span class="text-xl font-bold">{{
-                    Math.round(weatherStore.weather?.wind.speed! * 3.6)
-                  }}</span
-                  ><span>km/h</span>
-                </div>
-              </div>
-            </section>
+        <section>
+          <div
+            v-if="weatherStore.isLoading"
+            class="mx-auto my-auto flex justify-center"
+          >
+            <loading-animation />
           </div>
-        </content-card>
+          <div v-else>
+            <content-card>
+              <weather-stats />
+            </content-card>
+            <content-card>
+              <weather-stats />
+            </content-card>
+            <content-card>
+              <weather-stats />
+            </content-card>
+          </div>
+        </section>
       </main>
     </div>
   </div>
@@ -82,8 +38,10 @@ import { onMounted, ref } from 'vue';
 import { useWeatherStore } from '@/stores/weather';
 
 import ContentCard from '@/components/Shared/ContentCard.vue';
+import LoadingAnimation from '@/components/Shared/LoadingAnimation.vue';
 import NavBar from '@/components/NavBar.vue';
 import TextInput from '@/components/Shared/TextInput.vue';
+import WeatherStats from '@/components/WeatherStats.vue';
 
 const city = ref('');
 
@@ -91,3 +49,26 @@ const weatherStore = useWeatherStore();
 
 onMounted(() => weatherStore.fetchWeather('Osaka'));
 </script>
+
+<style scoped>
+div.background {
+  @apply flex min-h-screen flex-col bg-blue-600 text-white;
+}
+
+div.wrapper {
+  @apply mx-auto flex min-h-screen w-full flex-col gap-6 p-6;
+  @apply sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg;
+}
+
+main {
+  @apply flex h-full justify-center;
+}
+
+section {
+  @apply flex h-full w-full;
+}
+
+section div {
+  @apply flex flex-wrap justify-between gap-6;
+}
+</style>
