@@ -3,6 +3,7 @@
     <div class="wrapper">
       <nav-bar />
       <text-input
+        autofocus
         v-model.lazy="city"
         placeholder="Search for a city"
         @keyup.enter="weatherStore.fetchWeather(city)"
