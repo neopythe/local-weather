@@ -9,7 +9,7 @@
 
 <style scoped>
 div.wrapper {
-  @apply flex h-fit w-full justify-between gap-6 whitespace-nowrap;
+  @apply flex h-fit w-full select-none justify-between gap-6 whitespace-nowrap;
 }
 
 h2 {
