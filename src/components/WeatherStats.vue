@@ -1,5 +1,5 @@
 <template>
-  <div class="flex min-w-fit flex-col gap-4">
+  <div v-if="weatherStore.weather" class="flex min-w-fit flex-col gap-4">
     <section class="flex max-w-full items-start justify-between">
       <div class="flex flex-col items-start gap-2">
         <h2 class="text-lg">
@@ -58,6 +58,7 @@
       </div>
     </section>
   </div>
+  <h2 v-else class="text-lg">Sorry, something went wrong.</h2>
 </template>
 
 <script setup lang="ts">
