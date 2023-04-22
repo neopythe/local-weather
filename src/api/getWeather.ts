@@ -1,8 +1,9 @@
 import axios from 'axios';
+import throttle from 'lodash.throttle';
 
 import type { Weather } from '@/api/types';
 
-const getWeather = async (city: string, units: string = 'metric') => {
+const getWeather = throttle(async (city: string, units: string = 'metric') => {
   const response = await axios
     .get<Weather>(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${
@@ -13,6 +14,6 @@ const getWeather = async (city: string, units: string = 'metric') => {
       console.error(error);
     });
   return response?.data;
-};
+}, 2000);
 
 export default getWeather;
