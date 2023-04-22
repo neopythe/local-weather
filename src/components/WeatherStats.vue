@@ -58,7 +58,10 @@
       </div>
     </section>
   </div>
-  <h2 v-else class="text-lg">Sorry, something went wrong.</h2>
+  <div v-else class="flex flex-col items-center">
+    <h2 class="text-xl font-semibold">Sorry, something went wrong!</h2>
+    <p>Please ensure you entered a valid city and try searching again</p>
+  </div>
 </template>
 
 <script setup lang="ts">
