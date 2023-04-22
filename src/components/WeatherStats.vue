@@ -60,7 +60,9 @@
   </div>
   <div v-else class="flex flex-col items-center">
     <h2 class="text-xl font-semibold">Sorry, something went wrong!</h2>
-    <p>Please ensure you entered a valid city and try searching again</p>
+    <p class="text-center">
+      Please ensure you entered a valid city and try searching again
+    </p>
   </div>
 </template>
 
