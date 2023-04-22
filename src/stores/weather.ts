@@ -17,7 +17,7 @@ export const useWeatherStore = defineStore('weather', {
   actions: {
     async fetchWeather(city: string) {
       const weather = await getWeather(city);
-      this.weather = weather;
+      if (weather) this.weather = weather;
       this.isLoading = false;
     },
   },
